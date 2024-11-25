@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db-producer:
+    image: postgres:latest
+    container_name: producer-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: kafka
+    ports:
+      - "15432:5432"
+    networks:
+      - kafka-network
+
+networks:
+  kafka-network:
+    external: true
